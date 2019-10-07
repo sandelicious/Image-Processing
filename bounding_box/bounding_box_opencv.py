@@ -6,7 +6,7 @@ blur = cv2.GaussianBlur(gray, (9,9), 0)
 thresh = cv2.adaptiveThreshold(blur,255,cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY_INV,11,12)
 
 kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (9,9))
-dilate = cv2.dilate(thresh, kernel, iterations=1)
+dilate = cv2.dilate(thresh, kernel, iterations=2)
 
 cnts = cv2.findContours(dilate, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 cnts = cnts[0] if len(cnts) == 2 else cnts[1]
